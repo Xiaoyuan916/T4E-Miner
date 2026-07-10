@@ -1,0 +1,10 @@
+data
+ckpt
+result
+__pycache__
+*.pyc
+*.log
+*.pth
+*.pt
+*.bin
+*.safetensors

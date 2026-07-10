@@ -1,0 +1,19 @@
+name: T4E-Miner
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pytorch
+  - pytorch-cuda=11.8
+  - numpy
+  - scikit-learn
+  - tqdm
+  - faiss-cpu
+  - mkl
+  - pip
+  - pip:
+      - esm
