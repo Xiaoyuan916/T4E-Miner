@@ -10,8 +10,6 @@ import torch.distributed as dist
 import numpy as np
 from tqdm import tqdm
 import faiss
-import mkl
-mkl.get_max_threads()
 
 def parse_args():
     import argparse
@@ -55,20 +53,20 @@ if __name__ == '__main__':
     with torch.no_grad():
         for j, item in tqdm(enumerate(candidate_dataloader), total=len(candidate_dataloader)):
             out_result, last_repr = model(item, return_repr=True)
-            for i, r in zip(item, last_repr.cpu().numpy()):
+            for i, r in zip(item, last_repr.float().cpu().numpy()):
                 candidate_info_list.append((i, r))
     candidate_repr = np.stack([r for item, r in candidate_info_list], axis=0)
     print(candidate_repr.shape)
 
 
     # faiss index
-    index = faiss.IndexFlatL2(1280)
+    index = faiss.IndexFlatL2(960)
     index.add(candidate_repr)
     result_list = []
     with torch.no_grad():
         for j, item in tqdm(enumerate(seed_dataloader), total=len(seed_dataloader)):
             out_result, last_repr = model(item, return_repr=True)
-            D, I = index.search(last_repr.unsqueeze(0).cpu().numpy(), k=10)
+            D, I = index.search(last_repr.float().cpu().numpy(), k=10)
             for i, distance in zip(I[0], D[0]):
                 res_tuple = (item, candidate_info_list[i], distance)
                 if res_tuple not in result_list:
