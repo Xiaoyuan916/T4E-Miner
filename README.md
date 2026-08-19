@@ -47,7 +47,7 @@ T4E-Miner/
 
 Large processed datasets and model checkpoint files are not stored directly in this GitHub repository because of their file sizes. They are archived in Zenodo:
 
-> **Zenodo:** [processed datasets and trained checkpoint](INSERT_ZENODO_URL_HERE)
+> **Zenodo:** [processed datasets and trained checkpoint] (https://doi.org/10.5281/zenodo.21290155)
 
 After downloading the archive, place the files under `data/` and `ckpt/`, respectively. The expected dataset layout for model training is:
 
