@@ -17,3 +17,4 @@ dependencies:
       - esm==3.2.1.post1
       - transformers==4.48.1
       - huggingface-hub==0.36.0
+      - httpx==0.28.1
