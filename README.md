@@ -179,7 +179,7 @@ The script produces a complete binned table and a separate CSV file for every no
 
 ## Citation
 
-If you use T4E-Miner, please cite the associated article. Full citation information will be added after publication.
+If you use T4E-Miner, please cite the associated article. 
 
 ## License
 
