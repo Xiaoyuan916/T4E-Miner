@@ -12,13 +12,13 @@ class RetrievalDataset(Dataset):
         self.seed_dataset = FastaDataset(seed_path, label=0)
         
     def __len__(self):
-        return len(self.positive_dataset) + len(self.negative_dataset)
+        return len(self.candidate_dataset) + len(self.seed_dataset)
     
     def __getitem__(self, idx):
-        if idx < len(self.positive_dataset):
-            return self.positive_dataset[idx]
+        if idx < len(self.candidate_dataset):
+            return self.candidate_dataset[idx]
         else:
-            return self.negative_dataset[idx - len(self.positive_dataset)]
+            return self.seed_dataset[idx - len(self.candidate_dataset)]
     
     def collate_fn(self, batch):
         sequences, labels = zip(*batch)
