@@ -171,7 +171,7 @@ The script produces a complete binned table and a separate CSV file for every no
 
 ## Reproducibility notes
 
-- The random seed used by the training script is 42 unless otherwise specified.
+- The random seed used by the training script is 24 unless otherwise specified.
 - Positive samples and hard negatives were clustered at 40% sequence identity before cluster-separated dataset partitioning.
 - The fixed held-out test set was reserved before model training and was not used for model selection.
 - The processed dataset splits and trained checkpoint should be downloaded from the accompanying Zenodo record.
