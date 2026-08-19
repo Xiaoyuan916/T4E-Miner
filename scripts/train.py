@@ -35,7 +35,7 @@ def parse_args():
     
     parser.add_argument('--val_neg_size', type=int, default=2000)
     parser.add_argument('--test_neg_total', type=int, default=1000)
-    parser.add_argument('--random_seed', type=int, default=42)
+    parser.add_argument('--random_seed', type=int, default=24)
     return parser.parse_args()
 
 def run_fold(fold_idx, args, device, test_ds):
