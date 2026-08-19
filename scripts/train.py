@@ -18,8 +18,6 @@ from utils.common_utils import setup_seed, Logger
 from model import TFourEModel
 from dataset import TrainingDataset
 
-os.environ["HF_HUB_OFFLINE"] = "1"
-os.environ["TRANSFORMERS_OFFLINE"] = "1"
 
 
 def parse_args():
@@ -29,7 +27,7 @@ def parse_args():
     parser.add_argument('--model_path', type=str, required=True)
     parser.add_argument('--batch_size', type=int, default=8)
     parser.add_argument('--epoch', type=int, default=50)
-    parser.add_argument('--last_layers', type=int, default=1) 
+    parser.add_argument('--last_layers', type=int, default=4) 
     parser.add_argument('--save_path', type=str, default="./result_manual_split")
     parser.add_argument('--patience', type=int, default=15)
     
@@ -101,7 +99,7 @@ def run_fold(fold_idx, args, device, test_ds):
     test_loader = DataLoader(test_ds, batch_size=args.batch_size, shuffle=False, collate_fn=test_ds.collate_fn)
 
  
-    best_f1 = 0.0 
+    best_f1 = -1.0 
     patience_cnt = 0
     best_ckpt = os.path.join(save_dir, "best.pth")
     history = []
